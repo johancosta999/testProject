@@ -1,0 +1,39 @@
+.home-ul {
+  list-style: none;
+  padding: 20px 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #121a2f; /* dark navy background */
+}
+
+.home-ul li {
+  margin: 0 30px;
+}
+
+.home-ul a {
+  text-decoration: none;
+  color: #dbe2f1; /* soft light text */
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 18px;
+  transition: color 0.2s ease;
+}
+
+/* Hover: just change text color */
+.home-ul a:hover {
+  color: #6ea8ff; /* gentle blue tint */
+}
+
+/* Active page link (current page) */
+.home-ul .active {
+  color: #ffffff; /* white highlight */
+  font-weight: bold;
+}
+
+/* Remove heading spacing */
+.home-ul h1 {
+  font-size: 18px;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
