@@ -11,7 +11,6 @@ function AddUser() {
     gmail: "",
     age: "",
     address: "",
-
   });
 
   const handleChange = (e) => {
@@ -21,14 +20,14 @@ function AddUser() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(inputs);
-    sendRequest().then(() => history('/userDetails'))
-  }
+    await sendRequest();
+    history("/userDetails");
+  };
 
   const sendRequest = async() => {
-    await axios.post("http://Localhost:5000/users", {
+    await axios.post("http://localhost:5000/users", {
       name: String (inputs.name),
       gmail: String (inputs.gmail),
       age: Number (inputs.age),

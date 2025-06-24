@@ -3,7 +3,7 @@ import Nav from "../nav/nav"
 import axios from "axios"
 import User from "../User/User"
 
-const URL = "http://Localhost:5000/users"
+const URL = "http://localhost:5000/users"
 
 const fetchHandler = async () => {
   return await axios.get(URL).then((res)=> res.data);
