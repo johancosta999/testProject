@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from "react-router-dom"
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import './User.css'
 
 function User(props) {
     const {_id, name, gmail, age, address} = props.user;
@@ -17,7 +18,7 @@ function User(props) {
     };
 
   return (
-    <div>
+    <div className='hi'>
 
       <br></br>
       <h1>ID : {_id}</h1>
@@ -26,9 +27,9 @@ function User(props) {
       <h1>Age : {age}</h1>
       <h1>Address : {address}</h1>
 
-      <button><Link to ={`/userDetails/${_id}`}>Update</Link></button>
+      <button className="no-print"><Link to ={`/userDetails/${_id}`}>Update</Link></button>
       
-      <button onClick={deleteHandler}>Delete</button>
+      <button className="no-print" onClick={deleteHandler}>Delete</button>
       
     </div>
   )
