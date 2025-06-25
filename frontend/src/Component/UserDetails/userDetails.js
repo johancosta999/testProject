@@ -12,6 +12,7 @@ const fetchHandler = async () => {
 function UserDetails() {
 
   const [users, setUsers] = useState();
+
   useEffect(() => {
     fetchHandler().then((data) => setUsers(data.users));
   }, [])
@@ -23,7 +24,7 @@ function UserDetails() {
       <div>
         {users && users.map((user, i) =>(
           <div key = {i}>
-            <User user = {user}/>
+            <User user = {user} onDelete={fetchHandler}/>
           </div>
         ))}
       </div>

@@ -9,8 +9,7 @@ import UpdateUser from './Component/UpdateUser/UpdateUser';
 
 function App() {
   //js
-
-
+  
   return (
     <div>
       {/* html */}    

@@ -17,4 +17,4 @@ mongoose.connect("mongodb+srv://admin:VQXl9MkCtgnyxDzg@merncluster.8dgv3ew.mongo
 .then(() => {
     app.listen(5000);
 })
-.catch(() => console.log((err)));
+.catch((err) => console.log((err)));
