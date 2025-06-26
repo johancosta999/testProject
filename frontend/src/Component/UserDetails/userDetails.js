@@ -15,11 +15,24 @@ const fetchHandler = async () => {
 };
 
 function UserDetails() {
-  const [users, setUsers] = useState();
+  const [allUsers, setAllUsers] = useState([]); // 🔒 original data
+  const [users, setUsers] = useState([]);       // 👁️ filtered/displayed
+  const [searchQuery, setSearchQuery] = useState("");
+  const [noResults, setNoResults] = useState(false);
 
   useEffect(() => {
-    fetchHandler().then((data) => setUsers(data.users));
+    fetchHandler().then((data) => {
+      setAllUsers(data.users);
+      setUsers(data.users);
+    });
   }, []);
+
+  useEffect(() => {
+    if (searchQuery.trim() === "") {
+      setUsers(allUsers);
+      setNoResults(false);
+    }
+  }, [searchQuery, allUsers]);
 
   //print pdf
   const ComponentsRef = useRef();
@@ -39,10 +52,35 @@ function UserDetails() {
     });
   };
 
+  const handleSearch = () => {
+    const filteredUsers = allUsers.filter((user) =>
+      Object.values(user).some((field) =>
+        String(field || "")
+          .toLowerCase()
+          .includes(searchQuery.toLowerCase())
+      )
+    );
+    setUsers(filteredUsers);
+    setNoResults(filteredUsers.length === 0);
+  };
+ 
   return (
     <div>
       <Nav />
       <h1>User Details Display Page</h1>
+      <input
+        onChange={(e) => setSearchQuery(e.target.value)}
+        type="text"
+        name="search"
+        placeholder="Search User Details"
+      />
+      <button onClick={handleSearch}>Search</button>
+
+      {noResults ? (
+        <div>
+          <p>No Users Found</p>
+        </div>
+      ) : (
 
       <div>
         {users &&
@@ -52,7 +90,7 @@ function UserDetails() {
             </div>
           ))}
       </div>
-
+    )}
 
       <div style={{ position: "absolute", left: "-9999px", top: 0, width: "100%" }}>
         <PrintDetails ref={ComponentsRef} users={users} />
