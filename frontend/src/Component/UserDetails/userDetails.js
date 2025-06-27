@@ -63,6 +63,19 @@ function UserDetails() {
     setUsers(filteredUsers);
     setNoResults(filteredUsers.length === 0);
   };
+
+  const handleSendReport = () => {
+    //create whatsapp chat url
+    const phoneNumber = "+94777393622";
+    const message = `Selected User Reports`;
+    const whatsappURL = `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+
+    //open whatsapp in a new window
+    window.open(whatsappURL, "_blank");
+  }
+
+  
+
  
   return (
     <div>
@@ -100,6 +113,8 @@ function UserDetails() {
       <button className="no-print" onClick={handleDownloadPDF}>
         Download PDF
       </button>
+      
+      <button onClick={handleSendReport}>Send WhatsApp message</button>
     </div>
   );
 }
